@@ -1,11 +1,12 @@
 project "freetype"
-	location "freetype"
 	kind "StaticLib"
 	language "C"
     staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	DefaultTargetParams(true)
 
 	files
 	{
@@ -65,28 +66,12 @@ project "freetype"
 	defines
 	{
 		"FT2_BUILD_LIBRARY",
-		"_CRT_SECURE_NO_WARNINGS",
-		"_CRT_NONSTDC_NO_WARNINGS",
 	}
 
-	filter "system:windows"
-		systemversion "latest"
-
+	-- Missing base type config.
 	filter "system:macosx"
 		buildoptions { "-include CoreFoundation/CFBase.h" }
 
-	filter "configurations:Debug"
-		runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		runtime "Release"
-		optimize "on"
-        symbols "off"
 
 project "tinyxml2"
 	kind "StaticLib"
@@ -96,6 +81,8 @@ project "tinyxml2"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	DefaultTargetParams(true)
 
 	files
 	{
@@ -108,22 +95,6 @@ project "tinyxml2"
 		"include"
 	}
 
-	filter "system:windows"
-		systemversion "latest"
-
-	filter "configurations:Debug"
-		runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		runtime "Release"
-		optimize "on"
-        symbols "off"
-
 project "msdfgen"
 	kind "StaticLib"
 	language "C++"
@@ -132,6 +103,8 @@ project "msdfgen"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	DefaultTargetParams(true)
 
 	files
 	{
@@ -162,19 +135,3 @@ project "msdfgen"
 		"freetype",
 		"tinyxml2"
 	}
-
-	filter "system:windows"
-		systemversion "latest"
-
-	filter "configurations:Debug"
-		runtime "Debug"
-		symbols "on"
-
-	filter "configurations:Release"
-		runtime "Release"
-		optimize "on"
-
-	filter "configurations:Dist"
-		runtime "Release"
-		optimize "on"
-        symbols "off"
