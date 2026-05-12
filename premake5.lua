@@ -80,7 +80,7 @@ project "freetype"
 		runtime "Debug"
 		symbols "on"
 		optimize "speed"
-		flags { "NoRuntimeChecks" }
+		runtimechecks "Off"
 
 	filter "configurations:Release"
 		runtime "Release"
@@ -119,7 +119,7 @@ project "tinyxml2"
 		runtime "Debug"
 		symbols "on"
 		optimize "speed"
-		flags { "NoRuntimeChecks" }
+		runtimechecks "Off"
 
 	filter "configurations:Release"
 		runtime "Release"
@@ -177,7 +177,7 @@ project "msdfgen"
 		runtime "Debug"
 		symbols "on"
 		optimize "speed"
-		flags { "NoRuntimeChecks" }
+		runtimechecks "Off"
 
 	filter "configurations:Release"
 		runtime "Release"
