@@ -75,9 +75,12 @@ project "freetype"
 	filter "system:macosx"
 		buildoptions { "-include CoreFoundation/CFBase.h" }
 
+	-- SDE-8: vendor stays optimized in Debug.
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
+		optimize "speed"
+		flags { "NoRuntimeChecks" }
 
 	filter "configurations:Release"
 		runtime "Release"
@@ -111,9 +114,12 @@ project "tinyxml2"
 	filter "system:windows"
 		systemversion "latest"
 
+	-- SDE-8: vendor stays optimized in Debug.
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
+		optimize "speed"
+		flags { "NoRuntimeChecks" }
 
 	filter "configurations:Release"
 		runtime "Release"
@@ -166,9 +172,12 @@ project "msdfgen"
 	filter "system:windows"
 		systemversion "latest"
 
+	-- SDE-8: vendor stays optimized in Debug.
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
+		optimize "speed"
+		flags { "NoRuntimeChecks" }
 
 	filter "configurations:Release"
 		runtime "Release"
